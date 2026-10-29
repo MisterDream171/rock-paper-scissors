@@ -11,33 +11,40 @@ Everything must be in the console */
 let humanScore= 0
 let computerScore= 0
 
+
 /* STEP1: Create the humanchoice function, this will contain a prompt to ask to type, RPS */
 function getHumanChoice() {
-const question = prompt("Rock, paper, or scissors?")
+
+ const question = prompt("Rock, paper, or scissors?")
+ 
 
 /* create an if condition to state if the user writes rock, paper, or scissors,
 the console will output the message */
 
 if (question.toLowerCase() === "rock") {
   console.log("rock")
- 
+  return "rock"
 }
 
 else if(question.toLowerCase() === "paper") {
   console.log("paper")
+  return "paper"
   
 }
 /* make question.toLowerCase with two options, scissors or scissor */
 else if (question.toLowerCase() === "scissors" || question.toLowerCase() === "scissor") {
   console.log("scissors")
+  return "scissors"
   
 }
 
 else {
-  console.log("You need to put either rock, paper or scissors!")
+  return "You need to put either rock, paper or scissors!"
 }
 
 }
+
+
 
 /* Now, create a function that makes the computer choose between RPS */
 function getComputerChoice() {
@@ -65,8 +72,10 @@ else if (choice ===3) { /* you can either leave it like that or put else conditi
 }
 
 }
-
 /* Now create a function to play a round */
+
+
+
 
 function playRound(humanChoice, computerChoice) /* make two parameters to receive later the responses from the first functions created */ {
 
@@ -74,11 +83,115 @@ function playRound(humanChoice, computerChoice) /* make two parameters to receiv
 
 if (humanChoice === "rock" && computerChoice === "paper") {
   console.log("you lose, paper beats rock")
+  /* make use of the variables to change the score from 0 to 1 when someone wins or loses */
+  console.log("computer:", computerScore = computerScore + 1)
+  /* also state the 0 points from human */
+  console.log("human:", humanScore = humanScore + 0)
+}
 
+else if (humanChoice === "paper" && computerChoice === "rock") {
+  console.log("you win, paper beats rock")
+  console.log("computer:", computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 1)
+  /* do the same but reversed */
+}
+
+else if (humanChoice === "paper" && computerChoice === "scissors") {
+  console.log("you lose, scissors beats paper")
+  console.log("computer:", computerScore = computerScore + 1)
+  console.log("human:", humanScore = humanScore + 0)
+
+}
+
+else if (humanChoice === "scissors" && computerChoice === "paper") {
+  console.log("you win, scissors beats paper")
+  console.log("computer:", computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 1)
+
+}
+
+else if (humanChoice === "rock" && computerChoice === "scissors") {
+  console.log("you win, rock beats scissors")
+  console.log("computer:", computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 1)
+}
+
+else if (humanChoice === "scissors" && computerChoice === "rock") {
+  console.log("you lose, rock beats scissors")
+  console.log("computer:", computerScore = computerScore + 1)
+  console.log("human:", humanScore = humanScore + 0)
+}
+
+/* make else ifs to state a tie */
+else if (humanChoice === "rock" && computerChoice === "rock") {
+  console.log("A tie")
+  console.log("computer:", computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 0)
+}
+
+else if (humanChoice === "paper" && computerChoice === "paper") {
+  console.log("A tie")
+  console.log("computer:" , computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 0)
+}
+
+else if (humanChoice === "paper" && computerChoice === "paper") {
+  console.log("A tie")
+  console.log("computer:" , computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 0)
+}
+
+else if (humanChoice === "scissors" && computerChoice === "scissors") {
+  console.log("A tie")
+  console.log("computer:", computerScore = computerScore + 0)
+  console.log("human:", humanScore = humanScore + 0)
+}
+
+/* make an else when the responses from human are incorrect */
+else {
+  console.log("Maybe you wrote something wrong")
+}
+}
+/* make two variables to use them as arguments in playRound */
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+/* finish everything by stating the function */
+
+playRound(humanSelection, computerSelection)
+
+/* Now create a function for playing a game. You need that humanScore and computerScore reaches five, once that happens, the game ends */
+
+function playGame() {
+  /* It's important to create new variables to store the results from gethumanchoice and getcomputerchoice.
+  If you se the humanSelection, and computerSelection, the results repeated will be the same */
+
+let human = getHumanChoice();
+let computer = getComputerChoice();
+
+/* now state playRound with the new variables and below create an if condition that states the results */
+
+playRound(human, computer);
+
+/* make a condition to state if the scores are below five, the game keeps going */
+
+if (humanScore < 5 && computerScore < 5) {
+setTimeout(playGame, 5000)
+}
+/* make a condition to state if the scores reach five, they alert a message stating the winner */
+
+else if (humanScore === 5) {
+  alert("the winner is the human!")
+
+}
+
+else if (computerScore === 5) {
+  alert("the winner is the computer!")
 }
 
 }
 
 
-
-
+/* play the game */
+playGame();
