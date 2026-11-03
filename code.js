@@ -4,8 +4,6 @@
 It must contain three options, different possibilities, and five rounds.
 Everything must be in the console */
 
-
-
 /* EXTRA STEP, create the scores for the future round as variables, they will change everytime someone wins */
 
 let humanScore= 0
@@ -13,37 +11,37 @@ let computerScore= 0
 
 
 /* STEP1: Create the humanchoice function, this will contain a prompt to ask to type, RPS */
+
+
+alert("Welcome to RPS, please use the console to see the results")
+
 function getHumanChoice() {
 
- const question = prompt("Rock, paper, or scissors?")
- 
+
+const question = prompt("Rock, paper or scissors?")
 
 /* create an if condition to state if the user writes rock, paper, or scissors,
 the console will output the message */
 
-if (question.toLowerCase() === "rock") {
+if (question === "rock") {
   console.log("rock")
   return "rock"
 }
 
-else if(question.toLowerCase() === "paper") {
+else if(question === "paper") {
   console.log("paper")
   return "paper"
   
 }
 /* make question.toLowerCase with two options, scissors or scissor */
-else if (question.toLowerCase() === "scissors" || question.toLowerCase() === "scissor") {
+else if (question === "scissors" || question.toLowerCase() === "scissor") {
   console.log("scissors")
   return "scissors"
   
 }
 
-else {
-  return "You need to put either rock, paper or scissors!"
-}
 
 }
-
 
 
 /* Now, create a function that makes the computer choose between RPS */
@@ -129,28 +127,13 @@ else if (humanChoice === "rock" && computerChoice === "rock") {
   console.log("human:", humanScore = humanScore + 0)
 }
 
-else if (humanChoice === "paper" && computerChoice === "paper") {
-  console.log("A tie")
-  console.log("computer:" , computerScore = computerScore + 0)
-  console.log("human:", humanScore = humanScore + 0)
-}
 
-else if (humanChoice === "paper" && computerChoice === "paper") {
-  console.log("A tie")
-  console.log("computer:" , computerScore = computerScore + 0)
-  console.log("human:", humanScore = humanScore + 0)
-}
-
-else if (humanChoice === "scissors" && computerChoice === "scissors") {
-  console.log("A tie")
-  console.log("computer:", computerScore = computerScore + 0)
-  console.log("human:", humanScore = humanScore + 0)
-}
 
 /* make an else when the responses from human are incorrect */
 else {
-  console.log("Maybe you wrote something wrong")
+  console.log("tie")
 }
+
 }
 /* make two variables to use them as arguments in playRound */
 
@@ -194,4 +177,4 @@ else if (computerScore === 5) {
 
 
 /* play the game */
-playGame();
+setTimeout(playGame,5000)
