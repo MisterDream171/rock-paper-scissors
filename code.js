@@ -18,7 +18,7 @@ alert("Welcome to RPS, please use the console to see the results")
 function getHumanChoice() {
 
 
-const question = prompt("Rock, paper or scissors?")
+const question = prompt("Rock, paper or scissors?").toLowerCase()
 
 /* create an if condition to state if the user writes rock, paper, or scissors,
 the console will output the message */
